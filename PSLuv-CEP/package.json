@@ -1,0 +1,15 @@
+{
+  "name": "psluv-plugin",
+  "version": "1.0.0",
+  "description": "An HSLuv plugin for Adobe Photoshop",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "psluv-team",
+  "license": "ISC",
+  "dependencies": {
+    "hsluv": "^1.0.0"
+  }
+}

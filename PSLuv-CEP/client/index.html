@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="index.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <!-- HEADER -->
+        <div class="plugin-header" style="min-width:400px">
+        <p id="title">PSLUV COLOR PICKER</p>
+        </div>
+        <div class="row">
+            <div class="col c6" style="min-width:360px">
+                <div id="picker">
+                    <div id="display">
+                        <!-- COLOR SHAPE -->
+                        <canvas style="position:absolute;left:0" width="360" height="360"></canvas>
+                        <svg style="position:relative;left:0" height="360" width="360"></svg>
+                    </div>
+                    <table>
+                        <tbody>
+                            <!-- HSL SLIDERS -->
+                            <tr id="control-h">
+                                <td class="cell-input">
+                                    <input type="number" min="0" max="360" step="any" class="counter counter-hue"
+                                        tabindex="0" value="0.0">
+                                </td>
+                                <td>
+                                    <div class="range-slider">
+                                        <!-- <div class="range-slider-handle" style="left: -5px;"></div> -->
+                                    </div>
+                                </td>
+                                <td class="picker-label">H</td>
+                            </tr>
+                            <tr id="control-s">
+                                <td class="cell-input">
+                                    <input type="number" step="any" min="0" max="100" class="counter counter-saturation"
+                                        value="100.0">
+                                </td>
+                                <td>
+                                    <div class="range-slider">
+                                        <!-- <div class="range-slider-handle" style="left: 232px;"></div> -->
+                                    </div>
+                                </td>
+                                <td class="picker-label">S</td>
+                            </tr>
+                            <tr id="control-l">
+                                <td class="cell-input">
+                                    <input type="number" step="any" min="0" max="100" class="counter counter-lightness"
+                                        value="50.0">
+                                </td>
+                                <td>
+                                    <div class="range-slider">
+                                        <!-- <div class="range-slider-handle" style="left: 113.5px;"></div> -->
+                                    </div>
+                                </td>
+                                <td class="picker-label">L</td>
+                            </tr>
+                            <tr>
+                                <!-- HEX CODE INPUT FIELD -->
+                                <td class="cell-input cell-input-hex">
+                                    <input class="input-hex" pattern="#?[0-9a-fA-F]{6}" value="#cfb9a8">
+                                </td>
+                                <!-- SWATCH PREVIEW -->
+                                <td id="swatch" class="tooltip">
+                                    <div class="swatch" style="background-color: rgb(255, 0, 111);"></div>
+                                    <span class="tooltiptext">Click to add to swatches</span>
+                                </td>
+                                <td class="picker-label">Color</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        <script src="./CSInterface.js"></script>
+        <script src="./js/hsluv-1.0.0.min.js"></script>
+        <script src="./index.js"></script>
+        <div style="height: 4px"></div>
+    </main>
+    
+    <!-- Tab Selector HTML -->
+    <div id="container_tab">
+        <div class="tab_box">
+            <button class="tab_btn active">Swatches</button>
+            <button class="tab_btn">Palette Generator</button>
+            <div class="line"></div>
+        </div>
+        <div class="content_box">
+            <div class="content active">
+
+                <!--Swatches-->
+                <div class="buttons">
+                    <button class="swatch-button swatch-reset"><span class="swatch-button-top">Reset</span></button>
+                    <button class="swatch-button swatch-import"><span class="swatch-button-top">Import</span></button>
+                    <button class="swatch-button swatch-export"><span class="swatch-button-top">Export</span></button>
+                </div>
+                <div id="swatches-module" >
+                    <table class="swatch-class">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <input type="text" id="0" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="1" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="2" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="3" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="4" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="5" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="6" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="7" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <input type="text" id="8" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="9" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="10" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="11" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="12" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="13" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="14" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="15" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <input type="text" id="16" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="17" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="18" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="19" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="20" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="21" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="22" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="text" id="23" class="swatch-output swatch-display" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- History -->
+                <div class="history-module">
+                    <h2 id="history-label">History</h2>
+                    <div class="color-history">
+                        <input type="text" id="h0" class="swatch-output history-display" disabled>
+                        <input type="text" id="h1" class="swatch-output history-display" disabled>
+                        <input type="text" id="h2" class="swatch-output history-display" disabled>
+                        <input type="text" id="h3" class="swatch-output history-display" disabled>
+                        <input type="text" id="h4" class="swatch-output history-display" disabled>
+                        <input type="text" id="h5" class="swatch-output history-display" disabled>
+                        <input type="text" id="h6" class="swatch-output history-display" disabled>
+                        <input type="text" id="h7" class="swatch-output history-display" disabled>
+                        <input type="text" id="h8" class="swatch-output history-display" disabled>
+                        <input type="text" id="h9" class="swatch-output history-display" disabled>
+                        <input type="text" id="h10" class="swatch-output history-display" disabled>
+                        <input type="text" id="h11" class="swatch-output history-display" disabled>
+                        <input type="text" id="h12" class="swatch-output history-display" disabled>
+                        <input type="text" id="h13" class="swatch-output history-display" disabled>
+                        <input type="text" id="h14" class="swatch-output history-display" disabled>
+                        <input type="text" id="h15" class="swatch-output history-display" disabled>
+                        <input type="text" id="h16" class="swatch-output history-display" disabled>
+                        <input type="text" id="h17" class="swatch-output history-display" disabled>
+                        <input type="text" id="h18" class="swatch-output history-display" disabled>
+                        <input type="text" id="h19" class="swatch-output history-display" disabled>
+                        <input type="text" id="h20" class="swatch-output history-display" disabled>
+                        <input type="text" id="h21" class="swatch-output history-display" disabled>
+                        <input type="text" id="h22" class="swatch-output history-display" disabled>
+                        <input type="text" id="h23" class="swatch-output history-display" disabled>
+                        <input type="text" id="h24" class="swatch-output history-display" disabled>
+                        <input type="text" id="h25" class="swatch-output history-display" disabled>
+                        <input type="text" id="h26" class="swatch-output history-display" disabled>
+                        <input type="text" id="h27" class="swatch-output history-display" disabled>
+                        <input type="text" id="h28" class="swatch-output history-display" disabled>
+                        <input type="text" id="h29" class="swatch-output history-display" disabled>
+                        <input type="text" id="h30" class="swatch-output history-display" disabled>
+                        <input type="text" id="h31" class="swatch-output history-display" disabled>
+                        <input type="text" id="h32" class="swatch-output history-display" disabled>
+                        <input type="text" id="h33" class="swatch-output history-display" disabled>
+                        <input type="text" id="h34" class="swatch-output history-display" disabled>
+                        <input type="text" id="h35" class="swatch-output history-display" disabled>
+                        <input type="text" id="h36" class="swatch-output history-display" disabled>
+                        <input type="text" id="h37" class="swatch-output history-display" disabled>
+                        <input type="text" id="h38" class="swatch-output history-display" disabled>
+                        <input type="text" id="h39" class="swatch-output history-display" disabled>
+                        <input type="text" id="h40" class="swatch-output history-display" disabled>
+                        <input type="text" id="h41" class="swatch-output history-display" disabled>
+                        <input type="text" id="h42" class="swatch-output history-display" disabled>
+                        <input type="text" id="h43" class="swatch-output history-display" disabled>
+                        <input type="text" id="h44" class="swatch-output history-display" disabled>
+                        <input type="text" id="h45" class="swatch-output history-display" disabled>
+                        <input type="text" id="h46" class="swatch-output history-display" disabled>
+                        <input type="text" id="h47" class="swatch-output history-display" disabled>
+                        <input type="text" id="h48" class="swatch-output history-display" disabled>
+                        <input type="text" id="h49" class="swatch-output history-display" disabled>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!--Palette Gen-->
+            <div class="content">
+                <form action="#">
+                    <input type="file" id="file" accept="image/*"/>
+                    <label for="file" class="custom-file-upload"><span class="swatch-button-top">Choose a file</span></label>
+
+                    <label for="btnLoad" class="button-file-upload" onclick="paletteGenerator();"><span class="swatch-button-top">Load</span></label>
+                    <input type="button" id="btnLoad" value="Load"/>
+                </form>
+                    <canvas id="canvas-gen" hidden></canvas>
+                    <div id="palette"></div>
+                <div></div>
+                <p>Main Palette</p>
+                    <div id="main-palette">
+                        <input type="text" id="m0" class="swatch-output main-palette-display" disabled>
+                        <input type="text" id="m1" class="swatch-output main-palette-display" disabled>
+                        <input type="text" id="m2" class="swatch-output main-palette-display" disabled>
+                        <input type="text" id="m3" class="swatch-output main-palette-display" disabled>
+                    </div>
+
+                <p>Complementary</p>
+                    <div id="complementary-palette">
+                        <input type="text" id="c0" class="swatch-output comp-palette-display" disabled>
+                        <input type="text" id="c1" class="swatch-output comp-palette-display" disabled>
+                        <input type="text" id="c2" class="swatch-output comp-palette-display" disabled>
+                        <input type="text" id="c3" class="swatch-output comp-palette-display" disabled>
+                    </div>
+                <p>Analogous</p>
+                    <div id="analogous-palette">
+                        <input type="text" id="a0" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a1" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a2" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a3" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a4" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a5" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a6" class="swatch-output analog-palette-display" disabled>
+                        <input type="text" id="a7" class="swatch-output analog-palette-display" disabled>
+                    </div>    
+                <p>Triadic</p>
+                    <div id="triadic-palette">
+                        <input type="text" id="r0" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r1" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r2" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r3" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r4" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r5" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r6" class="swatch-output triad-palette-display" disabled>
+                        <input type="text" id="r7" class="swatch-output triad-palette-display" disabled>
+                    </div>    
+                <p>Tetradic</p>
+                    <div id="tetradic-palette">
+                        <input type="text" id="e0" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e1" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e2" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e3" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e4" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e5" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e6" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e7" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e8" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e9" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e10" class="swatch-output tetrad-palette-display" disabled>
+                        <input type="text" id="e11" class="swatch-output tetrad-palette-display" disabled>
+                    </div>
+                <script src="./js/median-cut-js.js" type="text/javascript"></script>
+                <script src="./js/harmony.js" type="text/javascript"></script>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tab Selector Code -->
+    <script>
+        const tabs = document.querySelectorAll('.tab_btn');
+        const all_content = document.querySelectorAll('.content');
+            
+        tabs.forEach((tab, index)=>{
+            tab.addEventListener('click', (e)=>{
+                tabs.forEach(tab => {tab.classList.remove('active')});
+                tab.classList.add('active');
+
+                var line=document.querySelector('.line');
+                line.style.width = e.target.offsetWidth + "px";
+                line.style.left = e.target.offsetLeft + "px";
+
+                all_content.forEach(content => {content.classList.remove('active')});
+                all_content[index].classList.add('active');
+            })
+        })
+    </script>  
+</body>
